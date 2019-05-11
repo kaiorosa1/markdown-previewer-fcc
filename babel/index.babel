@@ -2,13 +2,26 @@
 class App extends React.Component{
   constructor(props){
     super(props);
+    this.state ={
+      editorText: ''
+    };
   }
+  
+  changeText(newText){
+    this.setState({
+      editorText: newText 
+    });
+  }
+  
   render(){
+    
     return (
       <div>
         <h1>H1 from the App Component</h1>
-        <Editor />
-        <Previewer />
+        <div id="main">
+        <Editor changeText={this.changeText.bind(this)}/>
+        <Previewer previewText={this.state.editorText} />
+         </div>
       </div>
     );
     
@@ -19,11 +32,14 @@ class Editor extends React.Component {
   constructor(props){
     super(props);
   }
+  sendText(e){
+    this.props.changeText(e.target.value);
+  }
   render(){
     return(
-      <div>
+      <div id="editor-box">
         <h2>Editor Component</h2>
-        <textarea id="editor"></textarea>
+        <textarea onChange={this.sendText.bind(this)}  id="editor"></textarea>
       </div>
     );
   }
@@ -35,9 +51,10 @@ class Previewer extends React.Component {
   }
   render(){
     return(
-      <div>
+      <div id="preview-box">
+        <h2>Preview Component</h2>
         <div id="preview">
-          <h2>Preview Component</h2>
+          <h3>{this.props.previewText}</h3>
         </div>
       </div>
     );
