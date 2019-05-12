@@ -53,13 +53,15 @@ class Previewer extends React.Component {
   constructor(props) {
     super(props);
   }
+  getMarkdownText() {
+    let mark = marked(this.props.previewText, { sanitize: true });
+    return { __html: mark };
+  }
   render() {
     return (
       React.createElement("div", { id: "preview-box" },
       React.createElement("h2", null, "Preview Component"),
-      React.createElement("div", { id: "preview" },
-      marked(this.props.previewText))));
-
+      React.createElement("div", { id: "preview", dangerouslySetInnerHTML: this.getMarkdownText() })));
 
 
   }}
