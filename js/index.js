@@ -45,6 +45,10 @@ class Editor extends React.Component {
   }}
 
 
+marked.setOptions({
+  breaks: true });
+
+
 class Previewer extends React.Component {
   constructor(props) {
     super(props);
@@ -54,7 +58,7 @@ class Previewer extends React.Component {
       React.createElement("div", { id: "preview-box" },
       React.createElement("h2", null, "Preview Component"),
       React.createElement("div", { id: "preview" },
-      React.createElement("h3", null, this.props.previewText))));
+      marked(this.props.previewText))));
 
 
 
