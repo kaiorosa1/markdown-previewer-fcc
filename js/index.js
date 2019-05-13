@@ -35,11 +35,33 @@ class Editor extends React.Component {
   sendText(e) {
     this.props.changeText(e.target.value);
   }
+  showDefaultText() {
+    //     <h1>Markdown Previewer</h1>
+
+    // <h2>this is the project</h2>
+
+    // <a href="#">Link</a>
+
+    // <p><strong>loren ipsum<strong></p>
+
+    // ```
+    // // even or odd
+
+    // function evenOrOdd(number) {
+    // if (number%2 == 0) {
+    //     return "Even";
+    // }else{
+    //     return "Odd"
+    // }
+    // }
+    // ```
+  }
   render() {
     return (
       React.createElement("div", { id: "editor-box" },
       React.createElement("h2", null, "Editor Component"),
       React.createElement("textarea", { onChange: this.sendText.bind(this), id: "editor" })));
+
 
 
   }}
