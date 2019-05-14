@@ -3,7 +3,7 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state ={
-      editorText: ''
+      editorText: '# Intervention <br> <a href="#">Link</a>'
     };
   }
   
@@ -19,7 +19,7 @@ class App extends React.Component{
       <div>
         <h1>H1 from the App Component</h1>
         <div id="main">
-        <Editor changeText={this.changeText.bind(this)}/>
+        <Editor changeText={this.changeText.bind(this)} defaultText={this.state.editorText} />
         <Previewer previewText={this.state.editorText} />
          </div>
       </div>
@@ -60,8 +60,8 @@ class Editor extends React.Component {
     return(
       <div id="editor-box">
         <h2>Editor Component</h2>
-        <textarea onChange={this.sendText.bind(this)}  id="editor">
-</textarea>
+        <textarea onChange={this.sendText.bind(this)}  id="editor">{this.props.defaultText}
+        </textarea>
       </div>
     );
   }

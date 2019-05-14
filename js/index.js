@@ -3,7 +3,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editorText: '' };
+      editorText: '# Intervention <br> <a href="#">Link</a>' };
 
   }
 
@@ -19,7 +19,7 @@ class App extends React.Component {
       React.createElement("div", null,
       React.createElement("h1", null, "H1 from the App Component"),
       React.createElement("div", { id: "main" },
-      React.createElement(Editor, { changeText: this.changeText.bind(this) }),
+      React.createElement(Editor, { changeText: this.changeText.bind(this), defaultText: this.state.editorText }),
       React.createElement(Previewer, { previewText: this.state.editorText }))));
 
 
@@ -60,7 +60,7 @@ class Editor extends React.Component {
     return (
       React.createElement("div", { id: "editor-box" },
       React.createElement("h2", null, "Editor Component"),
-      React.createElement("textarea", { onChange: this.sendText.bind(this), id: "editor" })));
+      React.createElement("textarea", { onChange: this.sendText.bind(this), id: "editor" }, this.props.defaultText)));
 
 
 
