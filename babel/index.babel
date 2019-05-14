@@ -3,7 +3,35 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state ={
-      editorText: '# Intervention <br> <a href="#">Link</a>'
+      editorText: `# H1 Size Header 
+## H2 Size Header
+[link](#)
+**Bolded Text**
+\`<p>This is a paragraph</p>\`
+
+\`\`\`
+// Even or Odd
+
+function evenOrOdd(number) {
+    if (number%2 == 0) {
+      return "Even";
+    }else{
+      return "Odd";
+    }
+}
+\`\`\`
+
+> Block Quotes Test
+
+Lists 
+
+1. Code Every day
+1. Finish the Markdown Previewer Project (FCC)
+
+Last but not least:
+
+![DJ Mixer](https://images.unsplash.com/photo-1529392960549-df4af50eac23?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80)
+`
     };
   }
   
@@ -35,31 +63,9 @@ class Editor extends React.Component {
   sendText(e){
     this.props.changeText(e.target.value);
   }
-  showDefaultText(){
-//     <h1>Markdown Previewer</h1>
-
-// <h2>this is the project</h2>
-
-// <a href="#">Link</a>
-
-// <p><strong>loren ipsum<strong></p>
-
-// ```
-// // even or odd
-
-// function evenOrOdd(number) {
-// if (number%2 == 0) {
-//     return "Even";
-// }else{
-//     return "Odd"
-// }
-// }
-// ```
-  }
   render(){
     return(
       <div id="editor-box">
-        <h2>Editor Component</h2>
         <textarea onChange={this.sendText.bind(this)}  id="editor">{this.props.defaultText}
         </textarea>
       </div>
