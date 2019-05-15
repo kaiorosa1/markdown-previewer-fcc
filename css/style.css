@@ -15,9 +15,10 @@ body{
 }
 #editor-box{
   border: 10px solid blue;
+  height: 800px;
 }
 #preview-box {
   border: 10px solid green;
-  max-width: 800px; 
+  height: 800px;
   overflow: hidden;/* how to deal with overflowing content */
 }

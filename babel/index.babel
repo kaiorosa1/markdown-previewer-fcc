@@ -1,8 +1,8 @@
 // Basic Components Created
-class App extends React.Component{
-  constructor(props){
+class App extends React.Component {
+  constructor(props) {
     super(props);
-    this.state ={
+    this.state = {
       editorText: `# H1 Size Header 
 ## H2 Size Header
 [link](#)
@@ -34,62 +34,71 @@ Last but not least:
 `
     };
   }
-  
-  changeText(newText){
+
+  changeText(newText) {
     this.setState({
-      editorText: newText 
+      editorText: newText
     });
   }
-  
-  render(){
-    
+
+  render() {
     return (
       <div>
-        <h1>H1 from the App Component</h1>
+        <h1>Markdown Previewer</h1>
         <div id="main">
-        <Editor changeText={this.changeText.bind(this)} defaultText={this.state.editorText} />
-        <Previewer previewText={this.state.editorText} />
-         </div>
+          <Editor
+            changeText={this.changeText.bind(this)}
+            defaultText={this.state.editorText}
+          />
+          <Previewer previewText={this.state.editorText} />
+        </div>
       </div>
     );
-    
   }
 }
 
 class Editor extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
-  sendText(e){
+  sendText(e) {
     this.props.changeText(e.target.value);
   }
-  render(){
-    return(
-      <div id="editor-box">
-        <textarea onChange={this.sendText.bind(this)}  id="editor">{this.props.defaultText}
-        </textarea>
+  render() {
+    return (
+      <div>
+        <div>
+          <h2>Editor Componet</h2>
+        </div>
+        <div id="editor-box">
+          <textarea onChange={this.sendText.bind(this)} id="editor">
+            {this.props.defaultText}
+          </textarea>
+        </div>
       </div>
     );
   }
 }
 
 marked.setOptions({
-  breaks: true,
+  breaks: true
 });
 
 class Previewer extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
-  getMarkdownText(){
-    let mark =  marked(this.props.previewText,{sanitize: true});
-    return { __html: mark};
+  getMarkdownText() {
+    let mark = marked(this.props.previewText, { sanitize: true });
+    return { __html: mark };
   }
-  render(){
-    return(
-      <div id="preview-box">
+  render() {
+    return (
+      <div>
         <h2>Preview Component</h2>
-        <div id="preview" dangerouslySetInnerHTML={this.getMarkdownText()} /> 
+        <div id="preview-box">
+          <div id="preview" dangerouslySetInnerHTML={this.getMarkdownText()} />
+        </div>
       </div>
     );
   }

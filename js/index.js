@@ -42,14 +42,15 @@ Last but not least:
   }
 
   render() {
-
     return (
       React.createElement("div", null,
-      React.createElement("h1", null, "H1 from the App Component"),
+      React.createElement("h1", null, "Markdown Previewer"),
       React.createElement("div", { id: "main" },
-      React.createElement(Editor, { changeText: this.changeText.bind(this), defaultText: this.state.editorText }),
-      React.createElement(Previewer, { previewText: this.state.editorText }))));
+      React.createElement(Editor, {
+        changeText: this.changeText.bind(this),
+        defaultText: this.state.editorText }),
 
+      React.createElement(Previewer, { previewText: this.state.editorText }))));
 
 
 
@@ -65,8 +66,14 @@ class Editor extends React.Component {
   }
   render() {
     return (
+      React.createElement("div", null,
+      React.createElement("div", null,
+      React.createElement("h2", null, "Editor Componet")),
+
       React.createElement("div", { id: "editor-box" },
-      React.createElement("textarea", { onChange: this.sendText.bind(this), id: "editor" }, this.props.defaultText)));
+      React.createElement("textarea", { onChange: this.sendText.bind(this), id: "editor" },
+      this.props.defaultText))));
+
 
 
 
@@ -87,9 +94,11 @@ class Previewer extends React.Component {
   }
   render() {
     return (
-      React.createElement("div", { id: "preview-box" },
+      React.createElement("div", null,
       React.createElement("h2", null, "Preview Component"),
-      React.createElement("div", { id: "preview", dangerouslySetInnerHTML: this.getMarkdownText() })));
+      React.createElement("div", { id: "preview-box" },
+      React.createElement("div", { id: "preview", dangerouslySetInnerHTML: this.getMarkdownText() }))));
+
 
 
   }}
