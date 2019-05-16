@@ -20,5 +20,5 @@ body{
 #preview-box {
   border: 10px solid green;
   height: 800px;
-  overflow: hidden;/* how to deal with overflowing content */
+  overflow: auto;/* how to deal with overflowing content */
 }
