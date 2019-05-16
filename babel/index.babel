@@ -3,12 +3,21 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editorText: `# H1 Size Header 
-## H2 Size Header
-[link](#)
-**Bolded Text**
+      editorText: `# Front End Libraries Project 
+## This is the markdown project
+
+this is a project made by Kaio Rosa as part of the 
+Front End Libraries Certification on freeCodeCamp.
+
+[Learn More](#)
+
+**Example of the usage**
+Showing some markdown you can use: 
+
+Inline Code
 \`<p>This is a paragraph</p>\`
 
+Multiline Code
 \`\`\`
 // Even or Odd
 
@@ -21,14 +30,15 @@ function evenOrOdd(number) {
 }
 \`\`\`
 
+If you want to use quotes you can do it too.
 > Block Quotes Test
 
-Lists 
+Lists are also part of it.
 
 1. Code Every day
 1. Finish the Markdown Previewer Project (FCC)
 
-Last but not least:
+Last but not least, you can add images as well. Here's an example:
 
 ![DJ Mixer](https://images.unsplash.com/photo-1537734552481-35f4a9aca8c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)
 `
@@ -44,7 +54,7 @@ Last but not least:
   render() {
     return (
       <div>
-        <h1>Markdown Previewer</h1>
+      
         <div id="main">
           <Editor
             changeText={this.changeText.bind(this)}
@@ -67,8 +77,8 @@ class Editor extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <h2>Editor Componet</h2>
+        <div className="title-box">
+          <h2>Editor Component</h2>
         </div>
         <div id="editor-box">
           <textarea onChange={this.sendText.bind(this)} id="editor">
@@ -95,7 +105,9 @@ class Previewer extends React.Component {
   render() {
     return (
       <div>
+        <div className="title-box">
         <h2>Preview Component</h2>
+        </div>
         <div id="preview-box">
           <div id="preview" dangerouslySetInnerHTML={this.getMarkdownText()} />
         </div>
